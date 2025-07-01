@@ -13,7 +13,7 @@ def get_weather_data():
     lon = -73.96
     API_key = "dcce8473543bc1bb04bfc997204c8d02"
     endpoint = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}"
-    print(endpoint)
+    # print(endpoint)
 
     try:
         response = requests.get(endpoint)

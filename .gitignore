@@ -9,3 +9,5 @@ env/
 
 # macOS
 .DS_Store
+
+data/

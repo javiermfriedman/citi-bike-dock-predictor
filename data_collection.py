@@ -36,13 +36,8 @@ def load_data():
         station.append(weekday_name)
         station.append(hour_24)
 
-        print(station)
         # full_data_arr = station + other_data
         # print(full_data_arr)
 
 
-
-
-
-    #print(data_frame)
-    return
+    return bike_stations
