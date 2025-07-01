@@ -1,3 +1,5 @@
+# this file will get citi bike data for my bikesl
+
 import requests
 import pandas as pd
 import numpy as np

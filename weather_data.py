@@ -1,5 +1,8 @@
+# this file will gather current hour weather data
+
 import requests
 import pandas as pd
+import os
 
 class WeatherError(Exception):
     pass
@@ -9,15 +12,16 @@ def kelvin_to_fahrenheit(kelvin_temp):
     return fahrenheit_temp
 
 def get_weather_data():
-    lat = 40.81 # lon and lat of my nerighbrohod
+    lat = 40.81 # lon and lat of my neighborhood
     lon = -73.96
     API_key = "dcce8473543bc1bb04bfc997204c8d02"
+
     endpoint = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}"
-    # print(endpoint)
+    # print(f"[Weather Data]: Fetching from {endpoint}")
 
     try:
         response = requests.get(endpoint)
-        response.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
+        response.raise_for_status()  # Raises HTTPError for bad responses 
 
         data = response.json()
 
@@ -27,10 +31,11 @@ def get_weather_data():
 
         description = data['weather'][0]['main']
 
-        # print(f"Temperature: {temp}, Description: {description}")
+        # print(f"[Weather Data]: Temperature: {temp}, Description: {description}")
         return temp,description
 
     except requests.exceptions.RequestException as e:
         raise WeatherError(f"Connection Error: {e}")
     except KeyError as e:
         raise WeatherError(f"Malformed Data: Missing key in JSON response: {e}")
+

@@ -13,14 +13,15 @@ if __name__ == "__main__":
         "Temperature (F)",
         "Weather Description",
         "Weekday",
-        "Hour (24-hour)"
+        "Hour (24-hour)",
+        "Month"
     ]
 
-    # Define the directory for saving CSV files
-    output_directory = "data"
+    output_directory = "/Users/javierfriedman/Desktop/CodingStuff/AI/citi_bike_open_doc_predictor/data"
 
     # Create the directory if it doesn't exist
     os.makedirs(output_directory, exist_ok=True)
+    print(f"Ensuring output directory '{output_directory}' exists.") # Added print for clarity
 
     # Loop through each station's data
     for station_data in data:
@@ -45,6 +46,7 @@ if __name__ == "__main__":
                 combined_df = pd.concat([existing_df, new_df], ignore_index=True)
                 # Save the combined DataFrame back to the CSV file
                 combined_df.to_csv(csv_file_path, index=False)
+                print(f"Appended new data for '{station_name}' to {csv_file_path}")
             except pd.errors.EmptyDataError:
                 # Handle case where file exists but is empty
                 new_df.to_csv(csv_file_path, index=False)
