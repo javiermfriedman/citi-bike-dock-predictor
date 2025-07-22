@@ -12,7 +12,8 @@ on:
 jobs:
   collect-and-commit:
     runs-on: ubuntu-latest # Use a standard Linux runner
-
+    permissions:
+      contents: write
     steps:
       - name: 1. Check out repository
         uses: actions/checkout@v4 # Clones your repository into the runner
