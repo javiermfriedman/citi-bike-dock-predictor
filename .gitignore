@@ -10,7 +10,5 @@ env/
 # macOS
 .DS_Store
 
-data/
-
 cron_log.log
 

@@ -1,0 +1,2 @@
+uses cron to run this script hourly
+crontab -e

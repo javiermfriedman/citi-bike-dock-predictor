@@ -17,7 +17,7 @@ if __name__ == "__main__":
         "Month"
     ]
 
-    output_directory = "/Users/javierfriedman/Desktop/CodingStuff/AI/citi_bike_open_doc_predictor/data"
+    output_directory = "data"
 
     # Create the directory if it doesn't exist
     os.makedirs(output_directory, exist_ok=True)
