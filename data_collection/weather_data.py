@@ -19,20 +19,15 @@ def get_weather_data():
     lat = 40.81 # lon and lat of my neighborhood
     lon = -73.96 # lon and lat of my neighborhood
 
-    # --- MODIFICATION START ---
-    # Read the API key from an environment variable named "WEATHER_API_KEY"
     API_key = os.environ.get("WEATHER_API_KEY")
-
-    # Fail gracefully if the API key is not found
     if not API_key:
         raise ValueError("API key not found. Please set the WEATHER_API_KEY environment variable.")
-    # --- MODIFICATION END ---
 
     endpoint = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}"
     
     try:
         response = requests.get(endpoint)
-        response.raise_for_status()  # Raises HTTPError for bad responses 
+        response.raise_for_status()  
 
         data = response.json()
 

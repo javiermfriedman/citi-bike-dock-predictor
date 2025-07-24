@@ -1,14 +1,10 @@
 # Python
 __pycache__/
-*.pyc
-*.ipynb_checkpoints/ # If you use Jupyter notebooks
-.Python
+
 .env
 venv/
-env/
+
 
 # macOS
 .DS_Store
-
-cron_log.log
 

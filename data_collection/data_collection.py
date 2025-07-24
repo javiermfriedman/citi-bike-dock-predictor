@@ -1,7 +1,7 @@
 # this file get api data and stores it into a matrix for main.py to process
 
-from citi_bike_data import get_citi_bike_data
-from weather_data import get_weather_data
+from .citi_bike_data import get_citi_bike_data
+from .weather_data import get_weather_data
 import datetime
 
 def load_data():
@@ -11,10 +11,7 @@ def load_data():
     hour_24 = current_datetime.strftime("%H")
     month_name = current_datetime.strftime("%B")
 
-
     print(f"\n\n------ GATHER DATA AT {current_datetime} ------")
-
-    other_data = []
 
     print(f"[LOADING DATA]: gathering citi bike data")
     bike_stations = get_citi_bike_data()
@@ -23,13 +20,7 @@ def load_data():
     temp, description = get_weather_data()
      
 
-    other_data.append(temp)
-    other_data.append(description)
-    other_data.append(weekday_name)
-    other_data.append(hour_24)
-    other_data.append(month_name)
-
-    for station in bike_stations:
+    for station in bike_stations: # staion has station_name, empty_slots, ebikes		
         station.append(temp)
         station.append(description)
         station.append(weekday_name)
