@@ -1,4 +1,8 @@
-# this file will get citi bike data for my bikesl
+""" 
+Javier Friedman
+
+This file contains the functions to get the citi bike data for my desired stations.
+"""
 
 import requests
 import pandas as pd
@@ -34,7 +38,7 @@ def get_citi_bike_data():
 			station_name = station.get("name")
 			empty_slots = station.get("empty_slots")
 			# print(f"looking at station: {station_name}")
-			if filter_station(station_name): # if its station return the data
+			if filter_station(station_name): # if its my station return the data
 				extra = station.get("extra", {})
 				my_stations_data.append([
 					station_name,
@@ -42,7 +46,6 @@ def get_citi_bike_data():
 					extra.get("ebikes", 0),
 				])
 
-		
 	
 		return my_stations_data
 		

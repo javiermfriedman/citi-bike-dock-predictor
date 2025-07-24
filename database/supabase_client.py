@@ -1,4 +1,8 @@
-# supabase_client.py
+"""
+Javier Friedman
+
+This file contains the functions to insert the station data into the Supabase database.
+"""
 
 import os
 import requests
@@ -20,6 +24,6 @@ def insert_record(payload: dict):
     }
     response = requests.post(url, json=payload, headers=headers)
     if response.status_code >= 400:
-        print(f"[❌ ERROR] Supabase insert failed: {response.status_code} — {response.text}")
+        print(f"[ERROR] Supabase insert failed: {response.status_code} — {response.text}")
     else:
         print(f"[✅ INSERTED] {payload['station_name']} @ {payload['hour']}h")

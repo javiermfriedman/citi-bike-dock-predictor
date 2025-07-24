@@ -1,11 +1,16 @@
-# this file will gather current hour weather data
+"""
+Javier Friedman
+
+This file contains the functions to get the weather data for neighbordhood of stations
+It uses the dotenv library to load the environment variables from the .env file.
+"""
 
 import requests
 import pandas as pd
 import os
-from dotenv import load_dotenv # Import the dotenv library
+from dotenv import load_dotenv
 
-# Load variables from a .env file for local testing
+
 load_dotenv() 
 
 class WeatherError(Exception):

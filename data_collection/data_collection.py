@@ -1,4 +1,9 @@
-# this file get api data and stores it into a matrix for main.py to process
+"""
+Javier Friedman
+
+This file gets the data from the citi bike and weather APIs and stores it into 
+a matrix for main.py to process.
+"""
 
 from .citi_bike_data import get_citi_bike_data
 from .weather_data import get_weather_data
