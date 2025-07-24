@@ -63,6 +63,70 @@ The project is organized into modular Python scripts:
    python main.py
    ```
 
+## Automating with GitHub Actions
+
+You can automate data collection to run hourly using GitHub Actions. Here’s how to set it up:
+
+### 1. Create the Workflow File
+- In your project root, create the directory (if it doesn’t exist):
+  ```
+  .github/workflows/
+  ```
+- Inside that directory, create a file named `collect_data.yml`.
+
+### 2. Example Workflow: `.github/workflows/collect_data.yml`
+```yaml
+name: Collect Citi Bike Data Hourly
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs at the top of every hour
+  workflow_dispatch:      # Allows manual triggering from the GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run main.py
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python main.py
+```
+
+### 3. Add Your Secrets
+- Go to your GitHub repository on the web.
+- Click **Settings** → **Secrets and variables** → **Actions**.
+- Add the following secrets:
+  - `WEATHER_API_KEY`
+  - `SUPABASE_URL`
+  - `SUPABASE_KEY`
+
+These will be available to your workflow as environment variables.
+
+### 4. Commit and Push
+Add, commit, and push the new workflow file:
+```sh
+git add .github/workflows/collect_data.yml
+git commit -m "Add GitHub Actions workflow to run data collection hourly"
+git push origin main
+```
+
+Your script will now run every hour on GitHub Actions, using the secrets you provided.
+
 ## Future Work
 
 - Build and train a linear regression model to predict e-bike availability.
