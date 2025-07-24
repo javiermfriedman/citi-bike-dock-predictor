@@ -13,7 +13,7 @@ def load_data():
 
     current_datetime = datetime.datetime.now()
     weekday_name = current_datetime.strftime("%A")
-    hour_24 = current_datetime.hour
+    hour_24 = current_datetime.strftime("%H")
     month_name = current_datetime.strftime("%B")
 
     print(f"\n\n------ GATHER DATA AT {current_datetime} ------")

@@ -16,9 +16,10 @@ def main():
                 "temperature_f": float(station_data[3]),
                 "weather_description": station_data[4],
                 "weekday": station_data[5],
-                "hour": int(station_data[6]),
+                "hour": station_data[6],
                 "month": station_data[7]
             }
+        # print(payload)
         insert_record(payload)
 
 
