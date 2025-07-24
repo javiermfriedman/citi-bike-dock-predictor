@@ -1,0 +1,29 @@
+name: Collect Citi Bike Data Hourly
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs at the top of every hour
+  workflow_dispatch:      # Allows manual triggering from the GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run main.py
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python main.py
