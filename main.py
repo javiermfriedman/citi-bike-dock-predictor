@@ -19,7 +19,7 @@ def main():
                 "hour": station_data[6],
                 "month": station_data[7]
             }
-        # print(payload)
+        print(payload)
         insert_record(payload)
 
 
