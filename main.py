@@ -20,7 +20,7 @@ def main():
                 "month": station_data[7]
             }
         insert_record(payload)
-    print(payload)
+
 
 if __name__ == "__main__":
     main()
