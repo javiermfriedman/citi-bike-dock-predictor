@@ -8,10 +8,12 @@ a matrix for main.py to process.
 from .citi_bike_data import get_citi_bike_data
 from .weather_data import get_weather_data
 import datetime
+from zoneinfo import ZoneInfo
 
 def load_data():
 
-    current_datetime = datetime.datetime.now()
+    current_datetime = datetime.now(ZoneInfo("America/New_York"))
+
     weekday_name = current_datetime.strftime("%A")
     hour_24 = current_datetime.strftime("%H")
     month_name = current_datetime.strftime("%B")
