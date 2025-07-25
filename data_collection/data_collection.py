@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 
 def load_data():
 
-    current_datetime = datetime.now(ZoneInfo("America/New_York"))
+    current_datetime = datetime.datetime.now(ZoneInfo("America/New_York"))
 
     weekday_name = current_datetime.strftime("%A")
     hour_24 = current_datetime.strftime("%H")
